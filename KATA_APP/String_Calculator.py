@@ -18,10 +18,20 @@ class StringCalculator():
 
         #Iterating through Numbers List to find the sum of Numbers and Negatives
         if numbers:
-            negatives = [int(n) for n in numbers if n and int(n) < 0]
+            negatives = []
+            output = 0
+            for n in numbers:
+                if n:
+                    n = int(n)
+                    if n < 0:
+                        negatives.append(n)
+                    else:
+                        output += n
+
+            # negatives = [int(n) for n in numbers if n and int(n) < 0]
             if negatives:
                 raise ValueError(f"Negative numbers not allowed: {','.join(map(str, negatives))}")
             
-            output = sum(int(n) for n in numbers if n and int(n) >0)
+            # output = sum(int(n) for n in numbers if n and int(n) >0)
 
         return output
