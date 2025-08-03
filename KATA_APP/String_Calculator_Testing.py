@@ -32,6 +32,9 @@ class TestStringCalculator(unittest.TestCase):
     def test_multiple_negative_numbers(self):
         with pytest.raises(ValueError, match="Negative numbers not allowed: -1,-2,-3,-4"):
             self.assertEqual(self.calc.add("-1,-2,-3,-4,5"), 5)
+    
+    def test_ignore_gt_1000_numbers(self):
+        self.assertEqual(self.calc.add("2,3,1002"), 5)
 
 
 if __name__ == "__main__":

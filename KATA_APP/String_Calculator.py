@@ -25,7 +25,8 @@ class StringCalculator():
                     n = int(n)
                     if n < 0:
                         negatives.append(n)
-                    else:
+                    # handling change in inputs
+                    elif n < 1001:
                         output += n
 
             # negatives = [int(n) for n in numbers if n and int(n) < 0]
