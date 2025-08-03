@@ -41,6 +41,9 @@ class TestStringCalculator(unittest.TestCase):
     
     def test_multiple_set_delimiter(self):
         self.assertEqual(self.calc.add("//[*][%]\n1*2%3"), 6)
+    
+    def test_multiple_set_n_length_delimiter(self):
+        self.assertEqual(self.calc.add("//[*^][%$]\n1*^2%$3*^5"),11)
 
 if __name__ == "__main__":
     unittest.main()
