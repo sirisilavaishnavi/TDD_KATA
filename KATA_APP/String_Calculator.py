@@ -1,8 +1,12 @@
 class StringCalculator():
     
     def add(self, numbers):
+
+        output = None
         if not numbers:
-            return 0
+            output = 0
         
         if numbers:
-            return int(numbers)
+            output = sum(int(n) for n in numbers.split(',')) 
+
+        return output
