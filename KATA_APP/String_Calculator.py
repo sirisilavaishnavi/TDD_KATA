@@ -13,6 +13,9 @@ class StringCalculator():
         #handling Custom Delimiter
         if numbers.startswith("//"):
             delimiter, numbers = numbers[2:].split("\n", 1)
+            if len(delimiter) > 1:
+                delimiter = delimiter.replace("[","").replace("]","")
+
 
         numbers = numbers.replace("\n", ",").split(delimiter)
 

@@ -36,6 +36,8 @@ class TestStringCalculator(unittest.TestCase):
     def test_ignore_gt_1000_numbers(self):
         self.assertEqual(self.calc.add("2,3,1002"), 5)
 
-
+    def test_n_length_delimiter(self):
+        self.assertEqual(self.calc.add("//[***]\n1***2***3"), 6)
+        
 if __name__ == "__main__":
     unittest.main()
