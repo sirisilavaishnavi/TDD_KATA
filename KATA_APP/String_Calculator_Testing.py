@@ -29,7 +29,9 @@ class TestStringCalculator(unittest.TestCase):
         with pytest.raises(ValueError, match="Negative numbers not allowed: -2"):
             self.assertEqual(self.calc.add("1,-2"), 1)
         
-
+    def test_multiple_negative_numbers(self):
+        with pytest.raises(ValueError, match="Negative numbers not allowed: -1,-2,-3,-4"):
+            self.assertEqual(self.calc.add("-1,-2,-3,-4,5"), 5)
 
 
 if __name__ == "__main__":
