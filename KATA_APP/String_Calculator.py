@@ -7,6 +7,6 @@ class StringCalculator():
             output = 0
         
         if numbers:
-            output = sum(int(n) for n in numbers.split(',')) 
+            output = sum(int(n) for n in numbers.replace("\n", ",").split(',')) 
 
         return output
