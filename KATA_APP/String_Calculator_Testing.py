@@ -3,8 +3,11 @@ from String_Calculator import *
 
 class TestStringCalculator(unittest.TestCase):
 
-        def do_nothing():
-            pass
+    def setUp(self):
+        self.calc = StringCalculator()
+
+    def EmptyStringCalculator():
+        self.assertEqual(self.calc.add(""), 0)
 
 
 if __name__ == "_main_":
