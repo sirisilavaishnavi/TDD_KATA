@@ -1,3 +1,5 @@
+import re
+
 class StringCalculator():
     
     def add(self, numbers):
@@ -8,22 +10,28 @@ class StringCalculator():
             output = 0
 
         #defining Standard delimiter
-        delimiter = ","
+        delimiters = [",", "\n"]
 
         #handling Custom Delimiter
         if numbers.startswith("//"):
-            delimiter, numbers = numbers[2:].split("\n", 1)
-            if len(delimiter) > 1:
-                delimiter = delimiter.replace("[","").replace("]","")
 
+            delimiter_section, numbers = numbers.split("\n", 1)
+            custom_delimiters = re.findall(r"\[(.*?)\]", delimiter_section)
+            if custom_delimiters:
+                delimiters = custom_delimiters
+            else:
+                delimiters = [delimiter_section[2:]]
 
-        numbers = numbers.replace("\n", ",").split(delimiter)
+        pattern = '|'.join(map(re.escape, delimiters))
+        tokens = re.split(pattern, numbers)
+
+        # numbers = numbers.replace("\n", ",").split(delimiter)
 
         #Iterating through Numbers List to find the sum of Numbers and Negatives
         if numbers:
             negatives = []
             output = 0
-            for n in numbers:
+            for n in tokens:
                 if n:
                     n = int(n)
                     if n < 0:
