@@ -14,8 +14,14 @@ class StringCalculator():
         if numbers.startswith("//"):
             delimiter, numbers = numbers[2:].split("\n", 1)
 
-        #Iterating through Numbers List to find the sum of Numbers
+        numbers = numbers.replace("\n", ",").split(delimiter)
+
+        #Iterating through Numbers List to find the sum of Numbers and Negatives
         if numbers:
-            output = sum(int(n) for n in numbers.replace("\n", ",").split(delimiter)) 
+            negatives = [int(n) for n in numbers if n and int(n) < 0]
+            if negatives:
+                raise ValueError(f"Negative numbers not allowed: {','.join(map(str, negatives))}")
+            
+            output = sum(int(n) for n in numbers if n and int(n) >0)
 
         return output
